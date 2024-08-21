@@ -8,7 +8,7 @@ class IrisImageClassifierModel:
 
     '''
     I created a new classifier object that contains a classifier object for the sake of the new classifier already being finetuned on a custom dataset so that it can be used
-    in your main/driver file. Hypothetically, you could still recreate this without creating a new classifier constructor
+    in your main/driver file. Hypothetically, you could still recreate this without creating a new classifier constructor.
     '''
 
     def __init__ (self):
