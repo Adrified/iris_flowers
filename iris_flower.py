@@ -6,6 +6,11 @@ import cv2
 
 class IrisImageClassifierModel:
 
+    '''
+    I created a new classifier object that contains a classifier object for the sake of the new classifier already being finetuned on a custom dataset so that it can be used
+    in your main/driver file. Hypothetically, you could still recreate this without creating a new classifier constructor
+    '''
+
     def __init__ (self):
 
         model_name = 'google/vit-base-patch16-224-in21k'
@@ -20,6 +25,11 @@ class IrisImageClassifierModel:
         self.model.eval()
 
     def preprocess_train(self):
+
+        '''
+        For the dataset path, make sure you download the Kaggle Iris CV at https://www.kaggle.com/datasets/jeffheaton/iris-computer-vision or another adequate dataset. 
+        Use the file location path and replace it for "enter path here".
+        '''
 
         transform = transforms.Compose([
             transforms.Resize((224, 224)),
@@ -61,6 +71,11 @@ class IrisImageClassifierModel:
 
     def file_classify(self, path):
 
+        # Returns an int 0-2
+        # 0 - Setosa
+        # 1 - Versicolour
+        # 2 - Virginica
+        
         img = cv2.cvtColor(cv2.imread(path), cv2.COLOR_BGR2RGB)
         assert img is not None, "Path is inaccessible. Try backslashing or os.path.exists()"
         img_transform = transforms.Compose([
