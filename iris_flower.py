@@ -67,7 +67,7 @@ class IrisImageClassifierModel:
             print("Epoch: " + str(epoch+1) + "/" + str(self.epochs))
             print("Loss: " + str(running_loss/len(train_loader)))
 
-        torch.save(self.model.state_dict(), 'google/vit-base-patch16-224-in21k')
+        torch.save(self.model.state_dict(), 'enter dir u wish to save ur model at')
 
     def file_classify(self, path):
 
@@ -88,7 +88,7 @@ class IrisImageClassifierModel:
         img_tensor = img_tensor.unsqueeze(0)
 
         with torch.no_grad():
-            _, predicted = torch.max(self.model(img_tensor), 1)
+            _, predicted = torch.max(self.model(img_tensor).logits, 1)
 
         classes = ['iris-setosa', 'iris-versicolour', 'iris-virginica']
 
